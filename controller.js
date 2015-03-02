@@ -1,20 +1,20 @@
 (function () {
   "use strict";
   angular.module('demoApp')
-  .controller('MainController', function (SuperHerosService) {
+  .controller('MainController', function (BooksService) {
     var mainCtrl = this;
 
-    mainCtrl.newHero = {};
+    mainCtrl.newBook = {};
 
-    mainCtrl.superheros = SuperHerosService.getHeros();
+    mainCtrl.books = BooksService.getBooks();
 
     mainCtrl.alertMe = function () {
       alert("Hi from mainCtrl");
     };
 
-    mainCtrl.addSuperHero = function (newHero) {
-      SuperHerosService.addHero(newHero);
-      mainCtrl.newHero = {};
+    mainCtrl.addMyBook = function (newBook) {
+      BooksService.addBook(newBook);
+      mainCtrl.newBook = {};
     };
 
   });

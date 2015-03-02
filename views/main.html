@@ -1,15 +1,15 @@
 
 <ul>
-  <li ng-repeat="hero in mainCtrl.superheros">
-    Name: {{hero.name}}, Villian: {{hero.villian}}
+  <li ng-repeat="book in mainCtrl.books">
+    Name: {{book.name}}, Author: {{book.author}}
   </li>
 </ul>
 
 
 
-<form ng-submit="mainCtrl.addSuperHero(newHero)">
-  <input type="text" ng-model="newHero.name" placeholder="Name">
-  <input type="text" ng-model="newHero.villian" placeholder="Villian">
-  <button type="submit">Add Hero</button>
+<form ng-submit="mainCtrl.addMyBook(newBook)">
+  <input type="text" ng-model="newBook.name" placeholder="Name">
+  <input type="text" ng-model="newBook.author" placeholder="Author">
+  <button type="submit">Add Book</button>
 </form>
 <button ng-click="mainCtrl.alertMe()">Alert Me!!!</button>

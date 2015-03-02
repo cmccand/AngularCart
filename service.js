@@ -1,36 +1,38 @@
 (function () {
   "use strict";
   angular.module('demoApp')
-  .factory('SuperHerosService', function () {
-    var superHeros = [
+  .factory('BooksService', function () {
+    var books = [
   {
-    name: "Superman",
-    villian: "Lex Luthor"
+    name: "The Sun Also Rises",
+    author: "Ernest Hemingway"
   },
 {
-  name: "Black Widow",
-  villian: 'Magneto'
+  name: "Tender is the Night",
+  author: 'F. Scott Fitzgerald'
 },
 {
-  name: "Batman",
-  villian: "Joker"
+  name: "Lord Jim",
+  author: "Joseph Conrad"
 },
 {
-  name: "Super Woman",
-  villian: "Zod"
+  name: "Franny and Zooey",
+  author: "J.D. Salinger"
 }
 ];
 
-var getSuperHeros = function () {
-  return superHeros;
+var getMyBooks = function () {
+  return books;
 };
-var addSuperHero = function (hero) {
-  superHeros.push(hero);
+var addMyBook = function (book) {
+  books.push(book);
 }
 
 return {
-  getHeros: getSuperHeros,
-  addHero: addSuperHero
+  getBooks: getMyBooks,
+  addBook: addMyBook
+//  getHeros: getSuperHeros,
+//  addHero: addSuperHero
 };
 });
 
