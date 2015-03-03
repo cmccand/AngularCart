@@ -11,6 +11,21 @@
       controller: 'MainController as mainCtrl'
     })
 
+    .when('/admin/new', {
+      templateUrl: 'views/newBook.html',
+      controller: 'MainController as mainCtrl'
+    })
+
+    .when('/admin/edit/:productId', {
+      templateUrl: 'views/edit.html',
+      controller: 'MainController as mainCtrl'
+    })
+
+    .when('/admin/detail/:productId', {
+      templateUrl: 'views/details.html',
+      controller: 'MainController as mainCtrl'
+    })
+
     .when('/', {
       templateUrl: 'views/login.html',
       controller: 'MainController as mainCtrl'

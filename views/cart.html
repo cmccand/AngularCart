@@ -1,5 +1,8 @@
 <ul>
   <li ng-repeat="choice in cartCtrl.choices">
-    Name: {{choice.name}}, Author: {{choice.author}}
+    <img ng-src={{choice.picture}} />
+    <p class='Name'>{{choice.name}}</p>
+    <p class='Author'>{{choice.author}}</p>
+    <!-- Name: {{choice.name}}, Author: {{choice.author}} -->
   </li>
 </ul>

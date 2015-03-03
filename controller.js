@@ -10,11 +10,11 @@
 
     mainCtrl.login = function(username) {
       if(username === 'Chris'){
-      $location.path('/admin');
-      mainCtrl.username = username
-    } else {
-      $location.path('/store')
-      mainCtrl.username = username
+        $location.path('/admin');
+        mainCtrl.username = username
+      } else {
+        $location.path('/store')
+        mainCtrl.username = username
       }
     };
 
@@ -22,10 +22,22 @@
       alert("Hi from mainCtrl");
     }
 
-    mainCtrl.addMyBook = function (newBook) {
+    mainCtrl.addMyBook = function(newBook) {
       BooksService.addBook(newBook);
       mainCtrl.newBook = {};
+      $location.path('/admin');
     };
+
+    // BooksService.getSingleProduct($routeParams.productId).success(function(data) {
+    //   admin.singleProduct = data;
+    // });
+
+    /*$scope.$on('product:deleted',function() {
+    ProductService.getProducts().sucess(function(data) {
+    admin.products = data;
+  });
+})
+*/
 
   });
 
@@ -33,13 +45,14 @@
   .controller('CartController', function(CartService,$location) {
     var cartCtrl = this;
 
-    cartCtrl.newChoice = {};
+    // cartCtrl.newChoice = {};
 
     cartCtrl.choices = CartService.getChoices();
 
-    cartCtrl.addMyChoice = function (newChoice) {
+    cartCtrl.addMyChoice = function(newChoice) {
+      console.log(newChoice);
       CartService.addChoice(newChoice);
-      cartCtrl.newChoice = {};
+      // cartCtrl.newChoice = {};
       $location.path('/cart');
     };
 

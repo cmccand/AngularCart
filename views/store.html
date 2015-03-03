@@ -1,8 +1,19 @@
 <ul>
   <li ng-repeat="book in mainCtrl.books">
-    Name: {{book.name}}, Author: {{book.author}}
+    <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+      <div class="flipper">
+        <div class="front">
+          <img ng-src={{book.picture}} />
+          <p class='Name'>{{book.name}}</p>
+          <p class='Author'>{{book.author}}</p>
+        </div>
+        <div class="back">
+          <p class='summary'>{{book.summary}}</p>
+          <div ng-controller = "CartController as cartCtrl">
+            <button ng-click="cartCtrl.addMyChoice(book)">Add to my Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </li>
 </ul>
-<button ng-click="cartCtrl.addMyChoice(newChoice)">Add to my Cart</button>
-  <!-- <input type="text" ng-model="newChoice.name" placeholder="Name">
-  <input type="text" ng-model="newChoice.author" placeholder="Author"> -->

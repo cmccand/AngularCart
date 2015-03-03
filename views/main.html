@@ -1,14 +1,12 @@
+<h2>Welcome back, Chris</h2>
+<a href="#/admin/new">Create New Product</a>
 <ul>
   <li ng-repeat="book in mainCtrl.books">
-    Name: {{book.name}}, Author: {{book.author}}
+    <img data-ng-src={{book.picture}} />
+    <p class='Name'>{{book.name}}</p>
+    <p class='Author'>{{book.author}}</p>
+    <p><a href="#/admin/detail/{{product._id}}">View More</a>
+    <a href="#/admin/edit/{{product._id}}">Edit</a>
+    <button ng-click="admin.deleteProduct(product._id)">Delete</button></p>
   </li>
 </ul>
-
-
-
-<form ng-submit="mainCtrl.addMyBook(newBook)">
-  <input type="text" ng-model="newBook.name" placeholder="Name">
-  <input type="text" ng-model="newBook.author" placeholder="Author">
-  <button type="submit">Add Book</button>
-</form>
-<button ng-click="mainCtrl.alertMe()">Alert Me!!!</button>
