@@ -1,12 +1,18 @@
 (function () {
   "use strict";
   angular.module('BookApp')
-  .controller('MainController', function (BooksService,$location) {
+  .controller('MainController', function (BooksService,$location,$routeParams,$rootScope) {
     var mainCtrl = this;
 
     mainCtrl.newBook = {};
 
-    mainCtrl.books = BooksService.getBooks();
+    BooksService.getBooks().success(function(data) {
+      mainCtrl.books = data;
+    });
+
+    BooksService.getSingleProduct($routeParams.bookId).success(function(data) {
+    mainCtrl.singleProduct = data;
+    });
 
     mainCtrl.login = function(username) {
       if(username === 'Chris'){
@@ -18,19 +24,13 @@
       }
     };
 
-    mainCtrl.alertMe = function () {
-      alert("Hi from mainCtrl");
-    }
-
     mainCtrl.addMyBook = function(newBook) {
       BooksService.addBook(newBook);
       mainCtrl.newBook = {};
       $location.path('/admin');
     };
 
-    // BooksService.getSingleProduct($routeParams.productId).success(function(data) {
-    //   admin.singleProduct = data;
-    // });
+    mainCtrl.currentIndex = $routeParams.bookId;
 
     /*$scope.$on('product:deleted',function() {
     ProductService.getProducts().sucess(function(data) {

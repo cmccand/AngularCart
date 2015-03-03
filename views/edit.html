@@ -1,0 +1,9 @@
+<h3>{{mainCtrl.singleProduct.name}}</h3>
+<form class='adminform' ng-submit="mainCtrl.addMyBook(newBook)">
+  <input type="text" ng-model="mainCtrl.singleProduct.name" placeholder="Name">
+  <input type="text" ng-model="mainCtrl.singleProduct.author" placeholder="Author">
+  <input type="text" ng-model="mainCtrl.singleProduct.picture" placeholder="Image URL">
+  <button type="submit">Add Book</button>
+</form>
+
+  <button ng-click="mainCtrl.updateProduct(mainCtrl.singleProduct)">Update</button>
