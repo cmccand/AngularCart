@@ -1,9 +1,19 @@
-<h3>{{mainCtrl.singleProduct.name}}</h3>
-<form class='adminform' ng-submit="mainCtrl.addMyBook(newBook)">
+<h3>{{mainCtrl.singleBook.name}}</h3>
+<div class="update">
+  <p><input type="text" ng-model="mainCtrl.singleBook.picture"></p>
+  <p><input type="text" ng-model="mainCtrl.singleBook.name"></p>
+  <p><input type="text" ng-model="mainCtrl.singleBook.author"></p>
+  <!-- <p><input type="text" ng-model="admin.singleProduct.price"></p> -->
+  <button ng-click="mainCtrl.updateBook(mainCtrl.singleBook)">Update</button>
+</div>
+
+
+<!-- <form class='adminform' ng-submit="mainCtrl.updateProduct(mainCtrl.singleProduct)">
   <input type="text" ng-model="mainCtrl.singleProduct.name" placeholder="Name">
   <input type="text" ng-model="mainCtrl.singleProduct.author" placeholder="Author">
   <input type="text" ng-model="mainCtrl.singleProduct.picture" placeholder="Image URL">
-  <button type="submit">Add Book</button>
-</form>
+  <button type="submit">Update</button>
+</form> -->
 
-  <button ng-click="mainCtrl.updateProduct(mainCtrl.singleProduct)">Update</button>
+<!--   <button ng-click="mainCtrl.updateProduct(mainCtrl.singleProduct)">Update</button>
+ -->

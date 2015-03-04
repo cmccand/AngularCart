@@ -9,6 +9,7 @@
         </div>
         <div class="back">
           <p class='summary'>{{book.summary}}</p>
+          <p class='price'>{{book.price}}</p>
           <div ng-controller = "CartController as cartCtrl">
             <button ng-click="cartCtrl.addMyChoice(book)">Add to my Cart</button>
           </div>

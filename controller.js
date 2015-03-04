@@ -10,8 +10,8 @@
       mainCtrl.books = data;
     });
 
-    BooksService.getSingleProduct($routeParams.bookId).success(function(data) {
-    mainCtrl.singleProduct = data;
+    BooksService.getSingleBook($routeParams.bookId).success(function(data) {
+    mainCtrl.singleBook = data;
     });
 
     mainCtrl.login = function(username) {
@@ -30,6 +30,15 @@
       $location.path('/admin');
     };
 
+    mainCtrl.updateBook = function(book) {
+      BooksService.updateBook(book, $routeParams.bookId);
+      $location.path('/admin');
+    };
+
+    mainCtrl.deleteBook = function (id) {
+      BooksService.deleteBook(id);
+    };
+
     mainCtrl.currentIndex = $routeParams.bookId;
 
     /*$scope.$on('product:deleted',function() {
@@ -42,19 +51,28 @@
   });
 
   angular.module('BookApp')
-  .controller('CartController', function(CartService,$location) {
+  .controller('CartController', function(CartService, $routeParams, $location) {
     var cartCtrl = this;
 
     // cartCtrl.newChoice = {};
 
-    cartCtrl.choices = CartService.getChoices();
+    //cartCtrl.choices = CartService.getChoices();
+    CartService.getChoices().success(function(data) {
+      cartCtrl.choices = data;
+    });
 
     cartCtrl.addMyChoice = function(newChoice) {
       console.log(newChoice);
       CartService.addChoice(newChoice);
-      // cartCtrl.newChoice = {};
+      //cartCtrl.newChoice = {};
       $location.path('/cart');
     };
+
+    cartCtrl.deleteChoice = function (id) {
+      CartService.deleteChoice(id);
+    };
+
+    cartCtrl.currentIndex = $routeParams.choiceId;
 
   });
 })();

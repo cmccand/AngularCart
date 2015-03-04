@@ -5,8 +5,9 @@
     <img data-ng-src={{book.picture}} />
     <p class='Name'>{{book.name}}</p>
     <p class='Author'>{{book.author}}</p>
-    <p><a href="#/admin/detail/{{book._id}}">View More</a>
+    <p class='price'>{{book.price}}</p>
+    <p><a href="#/admin/detail/{{book._id}}">Details</a>
     <a href="#/admin/edit/{{book._id}}">Edit</a>
-    <button ng-click="admin.deleteProduct(book._id)">Delete</button></p>
+    <button ng-click="cartCtrl.deleteChoice(choice._id)">Delete</button></p>
   </li>
 </ul>

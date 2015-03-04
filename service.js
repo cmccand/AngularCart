@@ -9,7 +9,7 @@ var getMyBooks = function () {
   return $http.get(url);
 }
 
-var getSingleProduct = function(id) {
+var getSingleBook = function(id) {
   return $http.get(url + '/' + id);
 }
 
@@ -18,29 +18,49 @@ var addMyBook = function (book) {
   $rootScope.$broadcast('book:created');
 }
 
+var updateBook = function (book, id) {
+  $http.put(url + '/' + id, book);
+  $rootScope.$broadcast('book:updated');
+};
+
+var deleteBook= function (id) {
+  $http.delete(url + '/' + id);
+  $rootScope.$broadcast('book:deleted');
+};
+
 return {
   getBooks: getMyBooks,
   addBook: addMyBook,
-  getSingleProduct: getSingleProduct
+  getSingleBook: getSingleBook,
+  updateBook:updateBook,
+  deleteBook:deleteBook
 }
 
 })
 
 angular.module('BookApp')
-.factory('CartService', function () {
-  var choices = [];
-
+.factory('CartService', function ($http,$rootScope) {
+  // var choices = [];
+  var url = 'http://tiy-fee-rest.herokuapp.com/collections/chriscart'
 
   var getMyChoices = function () {
-    return choices;
+    return $http.get(url);
   }
   var addMyChoice = function (choice) {
-    choices.push(choice);
+    // choices.push(choice);
+    $http.post(url, choice);
+    $rootScope.$broadcast('book:created');
   }
+
+  var deleteChoice= function (id) {
+    $http.delete(url + '/' + id);
+    $rootScope.$broadcast('book:deleted');
+  };
 
   return {
     getChoices: getMyChoices,
-    addChoice: addMyChoice
+    addChoice: addMyChoice,
+    deleteChoice: deleteChoice
   };
 });
 

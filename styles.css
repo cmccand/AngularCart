@@ -27,7 +27,7 @@ li {
   margin: 3%; }
   li img {
     width: 100%;
-    max-height: 420px;
+    height: 420px;
     border: 1px solid black; }
 
 p {
@@ -37,6 +37,7 @@ p {
   margin: 0; }
 
 .Author {
+  height: 25px;
   font-size: 25px; }
 
 .summary {
