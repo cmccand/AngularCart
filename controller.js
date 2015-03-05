@@ -11,7 +11,7 @@
     });
 
     BooksService.getSingleBook($routeParams.bookId).success(function(data) {
-    mainCtrl.singleBook = data;
+      mainCtrl.singleBook = data;
     });
 
     mainCtrl.login = function(username) {
@@ -48,31 +48,37 @@
 })
 */
 
+});
+
+angular.module('BookApp')
+.controller('CartController', function(CartService, $routeParams, $location) {
+  var cartCtrl = this;
+
+  cartCtrl.total = 0;
+
+  CartService.getChoices().success(function(data) {
+    cartCtrl.choices = data;
   });
 
-  angular.module('BookApp')
-  .controller('CartController', function(CartService, $routeParams, $location) {
-    var cartCtrl = this;
+  cartCtrl.updateQty = CartService.updateQty();
 
-    // cartCtrl.newChoice = {};
+  cartCtrl.addMyChoice = function(newChoice) {
+    console.log(newChoice);
+    CartService.addChoice(newChoice);
+    //cartCtrl.newChoice = {};
+    $location.path('/cart');
+  };
 
-    //cartCtrl.choices = CartService.getChoices();
-    CartService.getChoices().success(function(data) {
-      cartCtrl.choices = data;
-    });
+  cartCtrl.deleteChoice = function (id) {
+    CartService.deleteChoice(id);
+  };
 
-    cartCtrl.addMyChoice = function(newChoice) {
-      console.log(newChoice);
-      CartService.addChoice(newChoice);
-      //cartCtrl.newChoice = {};
-      $location.path('/cart');
-    };
+  cartCtrl.updateTotal = function () {
+    cartCtrl.total = CartService.calculateTotal();
+    return cartCtrl.total;
+  };
 
-    cartCtrl.deleteChoice = function (id) {
-      CartService.deleteChoice(id);
-    };
+  cartCtrl.currentIndex = $routeParams.choiceId;
 
-    cartCtrl.currentIndex = $routeParams.choiceId;
-
-  });
+});
 })();

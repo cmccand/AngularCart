@@ -1,3 +1,6 @@
+<p>{{choice.title}} - {{choice.price | currency}}</p>
+<p>Total: {{cartCtrl.updateTotal() | currency }}</p>
+
 <ul>
   <li ng-repeat="choice in cartCtrl.choices">
     <img ng-src={{choice.picture}} />
@@ -5,5 +8,6 @@
     <p class='Author'>{{choice.author}}</p>
     <p class='price'>{{choice.price}}</p>
     <button ng-click="cartCtrl.deleteChoice(book._id)">Delete</button></p>
+    <p><input type="number" ng-model="choice.quantity" value="{{choice.quantity}}"></p>
   </li>
 </ul>
